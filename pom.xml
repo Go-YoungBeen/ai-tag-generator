@@ -71,16 +71,6 @@
                 </includes>
             </resource>
         </resources>
-
-        <finalName>ROOT</finalName>  <!-- 이 줄이 핵심 -->
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.2</version>
-            </plugin>
-        </plugins>
-
     </build>
 
 
