@@ -5,8 +5,9 @@
          version="6.0">
 <!--시작페이지를 form.jsp로 설정-->
     <welcome-file-list>
-        <welcome-file>list.jsp</welcome-file>
+        <welcome-file>guestbook</welcome-file>  <!-- ✅ 서블릿 경로로 바꾸기 -->
     </welcome-file-list>
+
 
 </web-app>
 

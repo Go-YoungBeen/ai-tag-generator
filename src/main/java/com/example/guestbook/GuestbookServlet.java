@@ -65,6 +65,6 @@ public class GuestbookServlet extends HttpServlet {
         Message message = new Message(name, content, tags, imagePath);
         MessageRepository.addMessage(message);
 
-        response.sendRedirect("guestbook");
+        response.sendRedirect(request.getContextPath() + "/guestbook");
     }
 }

@@ -309,15 +309,15 @@
 <div class="main-container">
     <div class="form-container">
         <div class="form-header">
-            <a href="guestbook" class="form-back">
-                <i class="fas fa-arrow-left"></i>
+            <a href="<%= request.getContextPath() %>/guestbook" class="form-back">
+            <i class="fas fa-arrow-left"></i>
             </a>
             <h1 class="form-title">새 게시물 만들기</h1>
             <div style="width: 24px;"></div> <!-- 균형을 위한 빈 공간 -->
         </div>
 
-        <form action="guestbook" method="post" enctype="multipart/form-data" id="post-form">
-            <div class="upload-container">
+        <form action="<%= request.getContextPath() %>/guestbook" method="post" enctype="multipart/form-data" id="post-form">
+        <div class="upload-container">
                 <div class="preview-area" id="preview-area">
                     <i class="far fa-images preview-icon"></i>
                     <div class="preview-text">사진을 여기에 끌어다 놓으세요</div>
