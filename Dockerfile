@@ -5,15 +5,11 @@ WORKDIR /app
 # pom.xml 복사
 COPY pom.xml .
 
-# pom.xml에 최신 maven-war-plugin 추가
-RUN sed -i 's/<\/build>/  <plugins>\n    <plugin>\n      <groupId>org.apache.maven.plugins<\/groupId>\n      <artifactId>maven-war-plugin<\/artifactId>\n      <version>3.3.2<\/version>\n    <\/plugin>\n  <\/plugins>\n<\/build>/' pom.xml || echo "Failed to update pom.xml"
-
-# 의존성 다운로드
-RUN mvn dependency:go-offline
-
-# 소스 코드 복사 및 빌드
+# 소스 코드 복사
 COPY src ./src
-RUN mvn clean package -DskipTests
+
+# maven-war-plugin 버전을 명시적으로 지정하여 빌드
+RUN mvn clean package -DskipTests -Dmaven.war.plugin.version=3.3.2
 
 # Tomcat 배포 스테이지
 FROM tomcat:9.0-jre17-temurin
