@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.io.FileOutputStream;
 import java.util.List;
 
-@WebServlet("/guestbook")
+@WebServlet("/")
 @MultipartConfig  // ✅ 파일 업로드 처리 가능하게 해줌
 public class GuestbookServlet extends HttpServlet {
 
