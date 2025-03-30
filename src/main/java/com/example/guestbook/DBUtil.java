@@ -6,17 +6,18 @@ import java.sql.DriverManager;
 
 public class DBUtil {
     private static final Dotenv dotenv = Dotenv.configure()
-            .filename(".env")   // ✅ resources 내 .env 로드
+            .filename(".env")
+            .ignoreIfMissing() // Render에는 파일 없으므로 무시
             .load();
-    // classpath 에서 .env 자동 탐색
-
 
     private static final String url = System.getenv("DB_URL") != null ?
-            System.getenv("DB_URL") : Dotenv.configure().filename(".env").load().get("DB_URL");
+            System.getenv("DB_URL") : dotenv.get("DB_URL");
 
-    private static final String user = System.getenv("DB_USER");
-    private static final String password = System.getenv("DB_PASSWORD");
+    private static final String user = System.getenv("DB_USER") != null ?
+            System.getenv("DB_USER") : dotenv.get("DB_USER");
 
+    private static final String password = System.getenv("DB_PASSWORD") != null ?
+            System.getenv("DB_PASSWORD") : dotenv.get("DB_PASSWORD");
 
     public static Connection getConnection() throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");

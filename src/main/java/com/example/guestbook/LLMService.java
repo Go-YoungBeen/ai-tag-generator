@@ -1,23 +1,20 @@
 package com.example.guestbook;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonParser;
 import io.github.cdimascio.dotenv.Dotenv;
+import com.google.gson.*;
 
 import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+import java.net.http.*;
 import java.nio.charset.StandardCharsets;
 
 public class LLMService {
     private static final Dotenv dotenv = Dotenv.configure()
-            .filename(".env")   // ✅ resources 내 .env 로드
+            .filename(".env")
+            .ignoreIfMissing()
             .load();
 
-
-    private static final String API_KEY = System.getenv("GROQ_API_KEY");
+    private static final String API_KEY = System.getenv("GROQ_API_KEY") != null ?
+            System.getenv("GROQ_API_KEY") : dotenv.get("GROQ_API_KEY");
 
     private static final String API_URL = "https://api.groq.com/openai/v1/chat/completions";
     private static final String SYSTEM_PROMPT = "문장을 읽고 관련 해시태그 3~5개를 생성해줘. 각 태그는 '#'으로 시작하고 쉼표로 구분해서 출력해.반드시 한글로";
