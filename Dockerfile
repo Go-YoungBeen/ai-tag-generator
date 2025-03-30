@@ -11,7 +11,9 @@ RUN mvn clean package -DskipTests
 # Tomcat 배포 스테이지
 FROM tomcat:10-jdk17-temurin
 
-COPY --from=builder /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
+COPY --from=builder /app/target/ROOT.war /usr/local/tomcat/webapps/
+
+
 
 EXPOSE 8080
 
