@@ -1,3 +1,1 @@
-<%
-    response.sendRedirect("guestbook");
-%>
+<% response.sendRedirect("guestbook"); %>

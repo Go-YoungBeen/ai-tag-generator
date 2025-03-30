@@ -316,7 +316,7 @@
             <div style="width: 24px;"></div> <!-- 균형을 위한 빈 공간 -->
         </div>
 
-        <form action="<%= request.getContextPath() %>/guestbook" method="post" enctype="multipart/form-data" id="post-form">
+        <form action="guestbook" method="post" enctype="multipart/form-data">
         <div class="upload-container">
                 <div class="preview-area" id="preview-area">
                     <i class="far fa-images preview-icon"></i>
