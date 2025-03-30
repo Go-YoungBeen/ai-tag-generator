@@ -17,7 +17,8 @@ public class LLMService {
             .load();
 
 
-    private static final String API_KEY = dotenv.get("GROQ_API_KEY");
+    private static final String API_KEY = System.getenv("GROQ_API_KEY");
+
     private static final String API_URL = "https://api.groq.com/openai/v1/chat/completions";
     private static final String SYSTEM_PROMPT = "문장을 읽고 관련 해시태그 3~5개를 생성해줘. 각 태그는 '#'으로 시작하고 쉼표로 구분해서 출력해.반드시 한글로";
 
