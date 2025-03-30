@@ -12,7 +12,8 @@ COPY src ./src
 RUN mvn clean package -DskipTests -Dmaven.war.plugin.version=3.3.2
 
 # Tomcat 배포 스테이지
-FROM tomcat:9.0-jre17-temurin
+# Tomcat 배포 스테이지
+FROM tomcat:10.1-jre17-temurin
 # 빌드된 WAR 파일을 Tomcat의 webapps 디렉토리에 복사
 COPY --from=builder /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8080
